@@ -2,6 +2,7 @@ GCC = g++
 CC = mpicxx
 #LIBB = -L/usr/local/Cellar/geos/3.5.0/lib 
 #LIBB = -L/sw/geosoft/geos/lib -lgeos
+
 LIBB = -L/cm/shared/apps/spack/cpu/opt/spack/linux-centos8-zen2/gcc-10.2.0/geos-3.8.1-qj54ki452kpsk7ykdiipicyjwx7gabqx/lib -lgeos-3.8.1
 #LIBCUDA = -L/opt/nvidia/hpc_sdk/Linux_x86_64/21.2/cuda/11.2/lib64
 
@@ -86,10 +87,14 @@ splitIO: sequentialIO.o SeqFilePartitioner.o road_network_parser.o FileSplits.o
 sequentialIO.o: sequentialIO.cpp
 	$(GCC)  $(DEBUG) $(CFLAGS) sequentialIO.cpp
 
+#ST_Intersect.o: ST_Intersect.cu
+#	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c -w ST_Intersect.cu	
+#	nvcc -w -m64 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_35,code=sm_35 -o ST_Intersect.o -c -w ST_Intersect.cu	
+
 ST_Intersect.o: ST_Intersect.cu
 	nvcc -w -m64 -gencode arch=compute_72,code=sm_72 -gencode arch=compute_70,code=sm_70 -o ST_Intersect.o -c -w ST_Intersect.cu	
-#	nvcc -w -m64 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_35,code=sm_35 -o ST_Intersect.o -c -w ST_Intersect.cu	
-	
+
+
 CudaDriver.o: CudaDriver.cpp
 	$(CC)  $(DEBUG) $(CFLAGS) CudaDriver.cpp
 	
