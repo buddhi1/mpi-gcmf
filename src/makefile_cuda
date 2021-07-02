@@ -2,11 +2,11 @@ GCC = g++
 CC = mpicxx
 #LIBB = -L/usr/local/Cellar/geos/3.5.0/lib 
 #LIBB = -L/sw/geosoft/geos/lib -lgeos
-LIBB = -L/usr/local/lib -lgeos
-LIBCUDA = -L/opt/nvidia/hpc_sdk/Linux_x86_64/21.2/cuda/11.2/lib64
+LIBB = -L/cm/shared/apps/spack/cpu/opt/spack/linux-centos8-zen2/gcc-10.2.0/geos-3.8.1-qj54ki452kpsk7ykdiipicyjwx7gabqx/lib -lgeos-3.8.1
+#LIBCUDA = -L/opt/nvidia/hpc_sdk/Linux_x86_64/21.2/cuda/11.2/lib64
 
 #CFLAGS = -m64 -O2 -Wall -c -std=c++0x -I/sw/geosoft/geos/include
-CFLAGS = -m64 -O2 -Wall -c -std=c++0x -I/usr/local/include
+CFLAGS = -m64 -O2 -Wall -c -std=c++0x -I/cm/shared/apps/spack/cpu/opt/spack/linux-centos8-zen2/gcc-10.2.0/geos-3.8.1-qj54ki452kpsk7ykdiipicyjwx7gabqx/include
 
 #LIBRA = ../lib/libshp.a ../lib/libtree.a
 LIBRA =
